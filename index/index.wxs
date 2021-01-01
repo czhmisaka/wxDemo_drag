@@ -5,12 +5,12 @@ var lock = false
 // 开始移动
 function touch_start(e, ownerInstance) {
     moveY = e.changedTouches[0].clientY
-    ownerInstance.callMethod('longTap', e)
+    ownerInstance.callMethod('changeMovingStatus', true)
     lock = true
 }
 
 // 移动中
-function touch_move(e, ownerInstance) {
+function touch_move(e) {
     if (!lock) return
     y = e.changedTouches[0].clientY - moveY
     e.instance.setStyle({

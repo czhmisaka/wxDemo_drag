@@ -41,7 +41,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
   "appid": "wx3e554d3236bfcd8a",
-  "projectname": "%E6%8B%96%E6%8B%BD%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B",
+  "projectname": "wxDemo_drag",
   "debugOptions": {
     "hidedInDevtools": []
   },

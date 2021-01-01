@@ -1,7 +1,5 @@
-
-/** 
- * index.json
- * */
 {
-"usingComponents": {}
+    "usingComponents": {
+        "card":"../../index/index"
+    }
 }
