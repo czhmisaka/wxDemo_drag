@@ -1,0 +1,36 @@
+var moveY = 0,
+    y = 0;
+var lock = false
+
+// 开始移动
+function touch_start(e, ownerInstance) {
+    moveY = e.changedTouches[0].clientY
+    ownerInstance.callMethod('longTap', e)
+    lock = true
+}
+
+// 移动中
+function touch_move(e, ownerInstance) {
+    if (!lock) return
+    y = e.changedTouches[0].clientY - moveY
+    e.instance.setStyle({
+        transform: 'translateY(' + y + 'px)',
+        'z-index': 100
+    })
+}
+
+// 移动位置结束
+function touch_end(e, ownerInstance) {
+    lock = false
+    e.instance.setStyle({
+        'z-index': 1
+    })
+    ownerInstance.callMethod('touchEnd', y)
+}
+
+
+module.exports = {
+    touch_start: touch_start,
+    touch_move: touch_move,
+    touch_end: touch_end
+}
