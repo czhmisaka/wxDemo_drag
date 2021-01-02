@@ -1,5 +1,5 @@
-
 @[TOC](czh的踩坑笔记 - 微信小程序 - 拖拽操作demo)
+
 
 ## 拖拽功能简介
 一般称拖拽是鼠标（手指）单点点击后执行移动（滑动）操作，程序主动计算滑动区域和位置，页面及时响应操作的一个功能。
@@ -8,200 +8,59 @@
 ~~谁还不知道啊~~
 
 ## 源码自提
-
-https://github.com/czhmisaka/wxDemo_drag.git
-
+  https://github.com/czhmisaka/wxDemo_drag.git
 ## 源码讲解
+  1. 使用了wxs，按照官方解释，应该能为手机用户提供更好的性能。（ios端可以有2~20倍提升，安卓端无差异）
+  2. 控制触摸穿透，避免组件在操作过程中对外的影响力，这边用的是catch:touchmove绑定中的一个特性，即参数（isMoving）中为空字符串时,catch事件会失效。
+  3. 动画效果模拟用的时 transform，这个主要时为了避免修改dom树的排序。
 
-
-
-
-
-
-
-## 功能快捷键
-
-撤销：<kbd>Ctrl/Command</kbd> + <kbd>Z</kbd>
-重做：<kbd>Ctrl/Command</kbd> + <kbd>Y</kbd>
-加粗：<kbd>Ctrl/Command</kbd> + <kbd>B</kbd>
-斜体：<kbd>Ctrl/Command</kbd> + <kbd>I</kbd>
-标题：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
-无序列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd>
-有序列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>
-检查列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>
-插入代码：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd>
-插入链接：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
-插入图片：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>
-查找：<kbd>Ctrl/Command</kbd> + <kbd>F</kbd>
-替换：<kbd>Ctrl/Command</kbd> + <kbd>G</kbd>
-
-## 合理的创建标题，有助于目录的生成
-
-直接输入1次<kbd>#</kbd>，并按下<kbd>space</kbd>后，将生成1级标题。
-输入2次<kbd>#</kbd>，并按下<kbd>space</kbd>后，将生成2级标题。
-以此类推，我们支持6级标题。有助于使用`TOC`语法后生成一个完美的目录。
-
-## 如何改变文本的样式
-
-*强调文本* _强调文本_
-
-**加粗文本** __加粗文本__
-
-==标记文本==
-
-~~删除文本~~
-
-> 引用文本
-
-H~2~O is是液体。
-
-2^10^ 运算结果是 1024.
-
-## 插入链接与图片
-
-链接: [link](https://www.csdn.net/).
-
-图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw)
-
-带尺寸的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw =30x30)
-
-居中的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center)
-
-居中并且带尺寸的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center =30x30)
-
-当然，我们为了让用户更加便捷，我们增加了图片拖拽功能。
-
-## 如何插入一段漂亮的代码片
-
-去[博客设置](https://mp.csdn.net/console/configBlog)页面，选择一款你喜欢的代码片高亮样式，下面展示同样高亮的 `代码片`.
-```javascript
-// An highlighted block
-var foo = 'bar';
-```
-
-## 生成一个适合你的列表
-
-- 项目
-  - 项目
-    - 项目
-
-1. 项目1
-2. 项目2
-3. 项目3
-
-- [ ] 计划任务
-- [x] 完成任务
-
-## 创建一个表格
-一个简单的表格是这么创建的：
-项目     | Value
--------- | -----
-电脑  | $1600
-手机  | $12
-导管  | $1
-
-### 设定内容居中、居左、居右
-使用`:---------:`居中
-使用`:----------`居左
-使用`----------:`居右
-| 第一列       | 第二列         | 第三列        |
-|:-----------:| -------------:|:-------------|
-| 第一列文本居中 | 第二列文本居右  | 第三列文本居左 |
-
-### SmartyPants
-SmartyPants将ASCII标点字符转换为“智能”印刷标点HTML实体。例如：
-|    TYPE   |ASCII                          |HTML
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
-
-## 创建一个自定义列表
-Markdown
-:  Text-to-HTML conversion tool
-
-Authors
-:  John
-:  Luke
-
-## 如何创建一个注脚
-
-一个具有注脚的文本。[^2]
-
-[^2]: 注脚的解释
-
-##  注释也是必不可少的
-
-Markdown将文本转换为 HTML。
-
-*[HTML]:   超文本标记语言
-
-## KaTeX数学公式
-
-您可以使用渲染LaTeX数学表达式 [KaTeX](https://khan.github.io/KaTeX/):
-
-Gamma公式展示 $\Gamma(n) = (n-1)!\quad\forall
-n\in\mathbb N$ 是通过欧拉积分
-
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-> 你可以找到更多关于的信息 **LaTeX** 数学表达式[here][1].
-
-## 新的甘特图功能，丰富你的文章
-
-```mermaid
-gantt
-        dateFormat  YYYY-MM-DD
-        title Adding GANTT diagram functionality to mermaid
-        section 现有任务
-        已完成               :done,    des1, 2014-01-06,2014-01-08
-        进行中               :active,  des2, 2014-01-09, 3d
-        计划一               :         des3, after des2, 5d
-        计划二               :         des4, after des3, 5d
-```
-- 关于 **甘特图** 语法，参考 [这儿][2],
-
-## UML 图表
-
-可以使用UML图表进行渲染。 [Mermaid](https://mermaidjs.github.io/). 例如下面产生的一个序列图：
-
-```mermaid
-sequenceDiagram
-张三 ->> 李四: 你好！李四, 最近怎么样?
-李四-->>王五: 你最近怎么样，王五？
-李四--x 张三: 我很好，谢谢!
-李四-x 王五: 我很好，谢谢!
-Note right of 王五: 李四想了很长时间, 文字太长了<br/>不适合放在一行.
-
-李四-->>张三: 打量着王五...
-张三->>王五: 很好... 王五, 你怎么样?
-```
-
-这将产生一个流程图。:
 
 ```mermaid
 graph LR
-A[长方形] -- 链接 --> B((圆))
-A --> C(圆角长方形)
-B --> D{菱形}
-C --> D
+A[元素捕捉longtap事件] --> B[修改isMoving状态] --> C[touch_move事件转为可响应状态] --> D[页面响应动画]
+C --> E[记录触摸修改距离]
+C -- touchEnd事件返回移动距离 --> F[回调函数通知父级页面提供修改位置的依据]
 ```
 
-- 关于 **Mermaid** 语法，参考 [这儿][3],
+## wxs文件源码
 
-## FLowchart流程图
+```javascript
 
-我们依旧会支持flowchart的流程图：
-```mermaid
-flowchat
-st=>start: 开始
-e=>end: 结束
-op=>operation: 我的操作
-cond=>condition: 确认？
+var moveY = 0,
+    y = 0;
+var lock = false
 
-st->op->cond
-cond(yes)->e
-cond(no)->op
+// 开始移动
+function touch_start(e, ownerInstance) {
+    moveY = e.changedTouches[0].clientY
+    ownerInstance.callMethod('changeMovingStatus', true)
+    lock = true
+}
+
+// 移动中
+function touch_move(e) {
+    if (!lock) return
+    y = e.changedTouches[0].clientY - moveY
+    e.instance.setStyle({
+        transform: 'translateY(' + y + 'px)',
+        'z-index': 100
+    })
+}
+
+// 移动位置结束
+function touch_end(e, ownerInstance) {
+    lock = false
+    e.instance.setStyle({
+        'z-index': 1
+    })
+    ownerInstance.callMethod('touchEnd', y)
+}
+
+
+module.exports = {
+    touch_start: touch_start,
+    touch_move: touch_move,
+    touch_end: touch_end
+}
+
 ```
