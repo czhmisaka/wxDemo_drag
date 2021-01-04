@@ -1,2 +1,3 @@
 <!--index.wxml-->
-<text>index</text>
+
+<card wx:for="{{cardList}}" wx:key="*this" catch:touchBack="reSortCardList" option="{{item}}" data-index="{{index}}"></card>

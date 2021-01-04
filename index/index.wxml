@@ -3,8 +3,11 @@
 <!-- 此处引用同文件夹下的wxs文件，申请对象名为 touch -->
 <view catch:touchmove="{{isMoving}}">
     <!-- 此处防止触摸穿透，规避在scroll-view中的元素排序触摸穿透问题,具体查看 index.js 中的详解 -->
-    <view class="touchBox {{isMoving?'box_shake':''}}" catch:longtap="{{touch.touch_start}}"
-        bind:touchmove="{{touch.touch_move}}" bind:touchend="{{touch.touch_end}}">
-
+    <view catch:longtap="{{touch.touch_start}}" bind:touchmove="{{touch.touch_move}}"
+        bind:touchend="{{touch.touch_end}}">
+        <!-- 此处动画层和位移层分开 -->
+        <view class="touchBox {{isMoving?'boxShake':''}}">
+            {{option}} {{isMoving?"拖动中":''}}
+        </view>
     </view>
 </view>

@@ -8,7 +8,8 @@
 ~~谁还不知道啊~~
 
 ## 源码自提
-  https://github.com/czhmisaka/wxDemo_drag.git
+
+  <https://github.com/czhmisaka/wxDemo_drag.git>
 ## 源码讲解
   1. 使用了wxs，按照官方解释，应该能为手机用户提供更好的性能。（ios端可以有2~20倍提升，安卓端无差异）
   2. 控制触摸穿透，避免组件在操作过程中对外的影响力，这边用的是catch:touchmove绑定中的一个特性，即参数（isMoving）中为空字符串时,catch事件会失效。
