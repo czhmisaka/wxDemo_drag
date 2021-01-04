@@ -7,7 +7,7 @@
         bind:touchend="{{touch.touch_end}}">
         <!-- 此处动画层和位移层分开 -->
         <view class="touchBox {{isMoving?'boxShake':''}}">
-            {{option}} {{isMoving?"拖动中":''}}
+            {{option.id}} {{isMoving?"拖动中":''}}
         </view>
     </view>
 </view>
